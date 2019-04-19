@@ -40,7 +40,7 @@ and press
 Prints the current enviornment
 
 .SH USAGE / COMPILATION
-All files are to be compiled using "gcc -Wall -Werror -Wextra -pedantic *. -o\bsh"
+All files are to be compiled using "gcc -Wall -Werror -Wextra -pedantic *. -o bsh"
 
 .I builtin.c
 - Contains the following built-ins for the shell:
@@ -61,6 +61,9 @@ All files are to be compiled using "gcc -Wall -Werror -Wextra -pedantic *. -o\bs
 
 .I shell.h
 - Contains all prototypes for base functions, built-ins, and global variables
+
+.SH Executable
+.I bsh
 
 
 
