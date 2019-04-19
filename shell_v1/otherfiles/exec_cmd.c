@@ -23,8 +23,6 @@ void exec_cmd(char *c, char **cmd)
 	{
 		execve(c, cmd, envp);
 		perror(c);
-		free(c);
-		free_cmds(cmd);
 		exit(98);
 	}
 	else

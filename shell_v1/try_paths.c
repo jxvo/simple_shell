@@ -24,7 +24,7 @@ char *try_paths(char **p, char *cmd)
 		}
 		else
 			free(ret);
-		i++;
-	}
-	return (NULL);
+			i++;
+		}
+	return ("Error");
 }

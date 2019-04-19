@@ -11,7 +11,7 @@
 
 char *try_paths(char **p, char *cmd)
 {
-	int i = 0;
+	int i = 0, a;
 
 	char *ret;
 
@@ -24,7 +24,7 @@ char *try_paths(char **p, char *cmd)
 		}
 		else
 			free(ret);
-		i++;
-	}
-	return (NULL);
+			i++;
+		}
+	return ("Error");
 }

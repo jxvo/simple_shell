@@ -11,14 +11,13 @@ char **token_maker(char *str)
 {
 	size_t idx = 0, io = 0;
 	int tkn = 1;
-	char **tokens = NULL;
-	char *buf = NULL, *token = NULL, *bufptr = NULL, *delim = " :\t\r\n";
+	char **tokens;
+	char *buf, *token, *bufptr, *delim = " :\t";
 
 	buf = _strdup(str);
 	if (buf == NULL)
 		return (NULL);
 	bufptr = buf;
-
 	while (*bufptr)
 	{
 		if (_strchr(delim, *bufptr) != NULL && io == 0)
@@ -45,6 +44,5 @@ char **token_maker(char *str)
 	}
 	tokens[idx] = NULL;
 
-	free(buf);
 	return (tokens);
 }

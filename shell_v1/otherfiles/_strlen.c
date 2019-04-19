@@ -4,7 +4,7 @@
  * _strlen - gets the length of a string
  * @str: string to evaluate
  *
- * Return: length of string
+ * Return: unsigned int character count
  */
 
 int _strlen(const char *str)
