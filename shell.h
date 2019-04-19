@@ -1,6 +1,7 @@
-#ifndef _SHELL_H_
-#define _SHELL_H_
+#ifndef __SHELL_H__
+#define __SHELL_H__
 
+/*libraries*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -12,40 +13,79 @@
 #include <sys/types.h>
 #include <stdbool.h>
 
+/*string_handlers*/
 char *_strdup(char *str);
 char *_strchr(char *str, int chr);
 int _strlen(const char *str);
+int _strcmp(char *s1, char *s2);
+int _strncmp(const char *first, const char *second, int n);
+
+/*command_handler*/
 char *_getpath(void);
 char **token_maker(char *str);
 void exec_cmd(char *c, char **cmd);
 char *pathappend(char *path, char *cmd);
 char *try_paths(char **p, char *cmd);
-int _strncmp(const char *first, const char *second, int n);
-void env(void);
-void exiter(void);
 
-extern __sighandler_t signal (int __sig, __sighandler_t __handler);
+/*built-ins*/
+void env_builtin(void);
+void exiter(char **cmd, char *b);
+int is_builtin(char **cmd, char *b);
+void prompt_printer(void);
+void sighandle(int n);
+
+/*helper function*/
+int check_type(char **cmd, char *b);
+void free_cmds(char **m);
+
+
+
+
+/*environment variables*/
+extern __sighandler_t signal(int __sig, __sighandler_t __handler);
 extern char **environ;
 
-/*
-global variables
-
-struct global
+/**
+ * struct builtins - Handles builtins
+ * @env: First member
+ * @exit: Second member
+ *
+ * Description: builtin commands
+ */
+struct builtins
 {
-	char **global_1 = environ;
-	env();
-	exit();
-	int global_1;
-	char *global_2;
-	...
-} global;*/
+	char *env;
+	char *exit;
 
-struct global
+} builtins;
+
+
+
+/**
+ * struct info - Status info struct
+ * @final_exit: First member
+ * @ln_count: Second member
+ *
+ * Description: Used in error handling
+ */
+struct info
 {
-        int exit;
-        char *env;
-        bool interactive;
+	int final_exit;
+	int ln_count;
+} info;
 
+
+/**
+ * struct flags - Holds flags
+ * @interactive: First member
+ *
+ * Description: used to handle
+ * boolean switches
+ */
+struct flags
+{
+	bool interactive;
 } flags;
 
-#endif
+
+#endif /* __SHELL_H__ */
